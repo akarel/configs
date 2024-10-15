@@ -1,0 +1,144 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "green",
+          "style": "plain",
+          "template": "\uf115\u2800",
+          "type": "text"
+        },
+        {
+          "foreground": "red",
+          "powerline_symbol": "\ue0b0",
+          "style": "plain",
+          "template": "\uf0e7",
+          "type": "root"
+        },
+        {
+          "foreground": "blue",
+          "properties": {
+            "folder_icon": "..",
+            "folder_separator_icon": "/",
+            "home_icon": "\uf7db\u2800",
+            "mapped_locations": {
+              "C:/Source": "\uf7a1\u2800"
+            },
+            "max_depth": 2,
+            "style": "agnoster_short"
+          },
+          "style": "plain",
+          "template": "\u2800{{ .Path }}",
+          "type": "path"
+        },
+        {
+          "foreground": "magenta",
+          "style": "plain",
+          "template": " \ue718 {{ .Full }}",
+          "type": "node"
+        },
+        {
+          "foreground": "magenta",
+          "style": "plain",
+          "template": " \ue77f.NET {{ if .Unsupported }}\uf071{{ else }}{{ .Full }}{{ end }} ",
+          "type": "dotnet"
+        },
+        {
+          "foreground": "magenta",
+          "style": "plain",
+          "template": " \ue7a8{{ .Full }}",
+          "type": "rust"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "segments": [
+        {
+          "foreground": "yellow",
+          "style": "plain",
+          "template": "({{ if eq \"pwsh\" .Shell}}pwsh core{{ else }}{{ if eq \"powershell\" .Shell }}pwsh{{else}}{{ .Shell }}{{ end }}{{ end }})",
+          "type": "text"
+        },
+        {
+          "foreground": "yellow",
+          "style": "plain",
+          "template": " \uf43a ",
+          "type": "text"
+        },
+        {
+          "foreground": "yellow",
+          "properties": {
+            "time_format": "15:04:05"
+          },
+          "style": "plain",
+          "template": "{{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "green",
+          "style": "plain",
+          "template": "{{ if .Segments.Contains \"Git\" }}\u2800\ufb0c{{ end }}",
+          "type": "text"
+        },
+        {
+          "foreground": "green",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}yellow{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}red{{ end }}",
+            "{{ if gt .Ahead 0 }}208{{ end }}",
+            "{{ if gt .Behind 0 }}green{{ end }}"
+          ],
+          "properties": {
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "github_icon": "\uf408 ",
+            "tag_icon": "\uf02b\u2800",
+            "codeberg_icon": "\ue2a6\u2800",
+            "branch_identical_icon": "\uf5f7",
+            "branch_ahead_icon": "\uf6bb",
+            "branch_behind_icon": "\uf6ba",
+            "branch_gone_icon": "\uf5f8"
+          },
+          "style": "plain",
+          "template": " on {{ .UpstreamIcon }}{{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }}<red> \uf044 {{ .Working.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}<yellow> \uf046 {{ .Staging.String }}</>{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }}",
+          "type": "git"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "green",
+          "style": "plain",
+          "template": "λ",
+          "type": "text"
+        },
+        {
+          "foreground": "yellow",
+          "style": "plain",
+          "template": " \uf054",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}
